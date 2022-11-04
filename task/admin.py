@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import TaskData
 
-# Register your models here.
+@admin.register(TaskData)
+class TaskAdmin(admin.ModelAdmin):
+    list_display = ["id", "title", "completed", "user"]
