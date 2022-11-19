@@ -34,10 +34,38 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=30),
 }
 
+# AUTH_USER_MODEL = 'account.User'
+
+SITE_ID = 1
+
+# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
+ACCOUNT_EMAIL_REQUIRED = True
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "poorvak455@gmail.com"
+EMAIL_HOST_PASSWORD = "tirmzvrbkrxwhaij"
+
+
+AUTHENTICATION_BACKENDS = (
+   "django.contrib.auth.backends.ModelBackend",
+   "allauth.account.auth_backends.AuthenticationBackend"
+)
 
 # Application definition
 
 INSTALLED_APPS = [
+    "allauth.account",
+    "dj_rest_auth",
+    "django.contrib.sites",
+    "allauth",
+    "allauth.socialaccount",
+    "dj_rest_auth.registration",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -45,9 +73,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
-    "rest_framework_simplejwt",
     "rest_framework.authtoken",
-    "dj_rest_auth",
     "task",
     "corsheaders",
 ]
